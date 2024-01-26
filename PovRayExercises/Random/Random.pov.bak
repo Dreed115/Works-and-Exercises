@@ -1,0 +1,24 @@
+#include "colors.inc"
+#include "textures.inc" 
+#include "rand.inc"
+
+camera{
+	location<0,-20,10>
+	look_at<0,0,0>
+}
+      
+light_source{
+	<0,-100,100>
+	White
+	parallel
+	point_at <0,0,0>
+}	
+
+background {Grey}
+
+#declare Semilla = clock; // Usa el tiempo actual como semilla
+#declare RandomNumber = rand(Semilla); // Genera un número aleatorio entre 0 y 1
+
+sphere { <0,0,0>, 7 pigment{ color rgb< 1,
+                                           1,
+                                           1*RandomNumber>}}

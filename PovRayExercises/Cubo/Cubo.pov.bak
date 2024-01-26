@@ -1,0 +1,44 @@
+#include "colors.inc"         
+
+camera{
+	location<5,3,5>
+	look_at<0,0,0>
+}
+      
+light_source{
+	<0,100,100>
+	White
+	parallel
+	point_at <0,0,0>
+}
+
+#declare a=2;	
+
+background {Grey}
+                        
+#fopen file "data.txt" read                       
+
+#declare Vector = array[100];
+#local i = 1;
+#while (defined(file))
+    #local Vector[i] = <0,0,0>;
+    #read (file, Vector[i])
+    sphere { Vector[i], 0.2 pigment{color Red}}
+    #local i = i+1;
+    #end                                                 
+#fclose file  
+
+#declare b = 0.07;
+
+cylinder {Vector[4] , Vector[7] b pigment{color Green}} 
+cylinder {Vector[7] , Vector[1] b pigment{color Green}} 
+cylinder {Vector[1] , Vector[8] b pigment{color Green}} 
+cylinder {Vector[8] , Vector[4] b pigment{color Green}} 
+cylinder {Vector[2] , Vector[3] b pigment{color Green}} 
+cylinder {Vector[3] , Vector[6] b pigment{color Green}} 
+cylinder {Vector[6] , Vector[5] b pigment{color Green}} 
+cylinder {Vector[5] , Vector[2] b pigment{color Green}}
+cylinder {Vector[1] , Vector[6] b pigment{color Green}} 
+cylinder {Vector[8] , Vector[5] b pigment{color Green}} 
+cylinder {Vector[4] , Vector[2] b pigment{color Green}} 
+cylinder {Vector[7] , Vector[3] b pigment{color Green}}                                                        
